@@ -283,22 +283,39 @@ void interpret(std::vector<char>* code) {
 		case 7:
 			if ((*datatape)[dataptr] != 0)
 				break;
-
-			do {
-
+			
+			int opened = 1;
+				
+			while (opened != 0) {
+				
 				i++;
-			} while ((*code)[i - 1] != 8);
-
+				if ((*code)[i] == 8)
+					opened--;
+				
+				if ((*code)[i] == 7)
+					opened++;
+			}
+			
+			i++;
 			break;
 
 		case 8:
 			if ((*datatape)[dataptr] == 0)
 				break;
 
-			do {
-
+			int opened = 1;
+				
+			while (opened != 0) {
+			
 				i--;
-			} while ((*code)[i - 1] != 7);
+				if ((*code)[i] == 7)
+					opened--;
+				
+				if ((*code)[i] == 8)
+					opened++;
+			}
+				
+			i++;
 			break;
 
 		case 9:
@@ -366,10 +383,8 @@ int main() {
 
 	std::vector<char>* compiledCode = compile(code);
 
-	for (int i = 0; i < compiledCode->size(); i++) {
-
+	for (int i = 0; i < compiledCode->size(); i++)
 		std::cout << (int)(*compiledCode)[i] << ' ';
-	} 
 	std::cout << std::endl << std::endl;
 
 	interpret(compiledCode);

@@ -283,17 +283,15 @@ void interpret(std::vector<char>* code) {
 		case 7:
 			if ((*datatape)[dataptr] != 0)
 				break;
-			
-			int opened = 1;
 				
-			while (opened != 0) {
+			for (int j = 1; j != 0; ) {
 				
 				i++;
 				if ((*code)[i] == 8)
-					opened--;
+					j--;
 				
 				if ((*code)[i] == 7)
-					opened++;
+					j++;
 			}
 			
 			i++;
@@ -302,17 +300,15 @@ void interpret(std::vector<char>* code) {
 		case 8:
 			if ((*datatape)[dataptr] == 0)
 				break;
-
-			int opened = 1;
 				
-			while (opened != 0) {
+			for (int j = 1; j != 0; ) {
 			
 				i--;
 				if ((*code)[i] == 7)
-					opened--;
+					j--;
 				
 				if ((*code)[i] == 8)
-					opened++;
+					j++;
 			}
 				
 			i++;

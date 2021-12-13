@@ -327,12 +327,15 @@ void interpret(std::vector<char>* code) {
 
 		case 13:
 			std::cout << (int)(*datatape)[dataptr];
+			break;
 
 		case 14:
 			int inpt;
 			std::cin >> inpt;
 			if (inpt <= CHAR_MAX_VALUE)
 				(*datatape)[dataptr] = inpt;
+
+			break;
 
 		case 100:
 			if ((*code)[i + 1] == 101)
